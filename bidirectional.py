@@ -97,7 +97,7 @@ for source,destination in edgeList:
             graph.addNode(destination)
     distance = ((cities[source][0] - cities[destination][0])**2+(cities[source][1] - cities[destination][1])**2)**0.5
     graph.addUndirectedEdge(source,destination,distance,distance)
-graph.show()
+# graph.show()
 # print(bidirectional_search2(graph,Oradea,Neamt))
 print(bidirectional_search(graph,Craiova,Neamt))
 print(bidirectional_search(graph,Bucharest,Timisoara))
@@ -109,3 +109,23 @@ print(bidirectional_search(graph,Timisoara,Vaslui))
 print(bidirectional_search(graph,Arad,Zerind))
 print(bidirectional_search(graph,Craiova,Zerind))
 print(bidirectional_search(graph,Arad,Oradea))
+
+
+#average time taken
+import timeit
+
+# Measure the time taken by the function using timeit
+start_node = Bucharest
+end_node = Neamt
+num_runs = 10
+time_taken = timeit.timeit(lambda: bidirectional_search(graph, start_node, end_node), number=num_runs)
+
+# Calculate the average time taken
+avg_time_taken = time_taken / num_runs
+
+print("Average time taken:", avg_time_taken)
+answer = bidirectional_search(graph,start_node,end_node)
+print("the length of the solution is:", len(answer))
+
+
+
