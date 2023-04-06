@@ -81,6 +81,12 @@ class Graph:
         # making sure a backward directed edge doesn't exist
         if self.edgeExists(other, node):
             raise Exception(f"There already exists a directed graph from {other} to {node}.")
+        
+        if not self.nodeExists(node):
+            self.addNode(node)
+        if not self.nodeExists(other):
+            self.addNode(other)
+        
         # add the undirected edge
         self.adjacencyList[node].append((other, forwardCost))
         self.adjacencyList[other].append((node, backwardCost))
